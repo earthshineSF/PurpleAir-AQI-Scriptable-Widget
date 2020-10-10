@@ -301,7 +301,7 @@ async function run() {
       hour: "2-digit",
       minute: "2-digit",
     });
-    const widgetText = listWidget.addText(`Updated ${updatedAt} ${data.temp_F}F`);
+    const widgetText = listWidget.addText(`Updated ${updatedAt} ${data.temp_f}F`);
     widgetText.textColor = textColor;
     widgetText.font = Font.regularSystemFont(10);
     widgetText.minimumScaleFactor = 0.5;
