@@ -13,7 +13,7 @@ const API_URL = "https://www.purpleair.com/json?show=";
  * https://www.purpleair.com/json has all sensors by location & ID.
  * @type {string}
  */
-const SENSOR_ID = args.widgetParameter || "69223";
+const SENSOR_ID = args.widgetParameter || "68495";
 
 /**
  * Widget attributes: AQI level threshold, text label, gradient start and end colors, text color
@@ -59,6 +59,7 @@ async function getSensorData(url, id) {
     ts: json.results[0].LastSeen,
     hum: json.results[0].humidity,
     loc: json.results[0].Label,
+    temp_f: json.results[0].temp_f || "-",
     lat: json.results[0].Lat,
     lon: json.results[0].Lon,
   };
@@ -300,7 +301,7 @@ async function run() {
       hour: "2-digit",
       minute: "2-digit",
     });
-    const widgetText = listWidget.addText(`Updated ${updatedAt}`);
+    const widgetText = listWidget.addText(`Updated ${updatedAt} ${data.temp_F}F`);
     widgetText.textColor = textColor;
     widgetText.font = Font.regularSystemFont(10);
     widgetText.minimumScaleFactor = 0.5;
